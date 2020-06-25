@@ -1,0 +1,3 @@
+codecov
+pre-commit
+pytest-cov
