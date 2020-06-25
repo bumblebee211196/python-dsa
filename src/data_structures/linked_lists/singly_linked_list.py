@@ -4,17 +4,17 @@ singly_linked_list.py: Description of what singly_linked_list.py does.
 
 __author__ = "S Sathish Babu"
 __date__ = "25/06/20 Thursday 12:54 PM"
-__email__ = "sathish.babu@zohocorp.com"
+__email__ = "bumblebee211196@gmail.com"
 
 from typing import List
 
 
 class Node:
-    __slots__ = ["val", "next"]
+    __slots__ = ["val", "link"]
 
-    def __init__(self, val: int, next: "Node" = None):
+    def __init__(self, val: int, link: "Node" = None):
         self.val = val
-        self.next = next
+        self.link = link
 
 
 class LinkedList:
@@ -47,8 +47,8 @@ class LinkedList:
         elif 0 < index <= self.len:
             curr = self.head
             for _ in range(index - 1):
-                curr = curr.next
-            curr.next = Node(val, curr.next)
+                curr = curr.link
+            curr.link = Node(val, curr.link)
             self.len += 1
 
     def remove_head(self) -> None:
@@ -56,7 +56,7 @@ class LinkedList:
         Removes the head node if there exists one
         """
         if self.len > 0:
-            self.head = self.head.next
+            self.head = self.head.link
             self.len -= 1
 
     def remove_at_index(self, index: int) -> None:
@@ -70,8 +70,8 @@ class LinkedList:
         elif 0 < index < self.len:
             curr = self.head
             for _ in range(index - 1):
-                curr = curr.next
-            curr.next = curr.next.next
+                curr = curr.link
+            curr.link = curr.link.link
             self.len -= 1
 
 
@@ -86,5 +86,5 @@ def list_to_array(llist: LinkedList) -> List[int]:
     curr, values = llist.head, []
     while curr:
         values.append(curr.val)
-        curr = curr.next
+        curr = curr.link
     return values
