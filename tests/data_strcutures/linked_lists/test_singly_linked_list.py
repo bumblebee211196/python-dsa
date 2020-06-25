@@ -6,6 +6,8 @@ __author__ = "S Sathish Babu"
 __date__ = "25/06/20 Thursday 12:54 PM"
 __email__ = "sathish.babu@zohocorp.com"
 
+import pytest
+
 from data_structures.linked_lists.singly_linked_list import (
     array_to_list,
     list_to_array,
@@ -35,6 +37,14 @@ def test_add_at_index():
         input_list, index, val, res_list = case
         input_list.add_at_index(index, val)
         assert list_to_array(input_list) == list_to_array(res_list)
+    cases = [
+        (array_to_list([1, 2, 3, 4]), -1, 5),
+        (array_to_list([1, 2, 3, 4]), 5, 5),
+    ]
+    for case in cases:
+        input_list, index, val = case
+        with pytest.raises(IndexError):
+            input_list.add_at_index(index, val)
 
 
 def test_remove_head():
@@ -61,3 +71,11 @@ def test_remove_at_index():
         input_list, index, res_list = case
         input_list.remove_at_index(index)
         assert list_to_array(input_list) == list_to_array(res_list)
+    cases = [
+        (array_to_list([1, 2, 3, 4]), -1),
+        (array_to_list([1, 2, 3, 4]), 5),
+    ]
+    for case in cases:
+        input_list, index = case
+        with pytest.raises(IndexError):
+            input_list.remove_at_index(index)

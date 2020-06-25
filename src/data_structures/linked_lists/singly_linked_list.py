@@ -50,6 +50,8 @@ class LinkedList:
                 curr = curr.link
             curr.link = Node(val, curr.link)
             self.len += 1
+        else:
+            raise IndexError("Invalid index")
 
     def remove_head(self) -> None:
         """
@@ -73,6 +75,8 @@ class LinkedList:
                 curr = curr.link
             curr.link = curr.link.link
             self.len -= 1
+        else:
+            raise IndexError("Invalid index")
 
 
 def array_to_list(values: List[int]) -> LinkedList:
