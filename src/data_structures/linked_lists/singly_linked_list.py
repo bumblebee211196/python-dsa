@@ -10,6 +10,8 @@ from typing import List
 
 
 class Node:
+    __slots__ = ["val", "next"]
+
     def __init__(self, val: int, next: "Node" = None):
         self.val = val
         self.next = next
@@ -44,7 +46,7 @@ class LinkedList:
             self.add_to_head(val)
         elif 0 < index <= self.len:
             curr = self.head
-            for i in range(index - 1):
+            for _ in range(index - 1):
                 curr = curr.next
             curr.next = Node(val, curr.next)
             self.len += 1
@@ -67,7 +69,7 @@ class LinkedList:
             self.remove_head()
         elif 0 < index < self.len:
             curr = self.head
-            for i in range(index - 1):
+            for _ in range(index - 1):
                 curr = curr.next
             curr.next = curr.next.next
             self.len -= 1
